@@ -61,6 +61,21 @@ const Projects = () => {
         "PostgreSQL",
       ],
     },
+    {
+      id: "manifest",
+      title: "Manifest",
+      description:
+        "A mobile-first warehouse management app that digitizes shipment receiving with offline-first barcode scanning, discrepancy tracking, and cloud sync.",
+      image: "/manifest.svg",
+      tags: [
+        "React Native",
+        "Expo",
+        "Redux",
+        "Supabase",
+        "Node.js",
+        "Express",
+      ],
+    },
   ];
 
   return (

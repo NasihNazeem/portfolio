@@ -155,6 +155,50 @@ const ProjectDetail = () => {
         deployment: ["Azure", "Docker Compose", "GitHub Actions", "Caddy"],
       },
     },
+    manifest: {
+      title: "Manifest",
+      subtitle: "Warehouse Receiving Management App",
+      description:
+        "Manifest is a production-ready mobile app that digitizes warehouse shipment receiving. Built with React Native and Expo, it enables warehouse staff to efficiently track inventory, scan barcodes, record quantities, and identify discrepancies between purchase orders and deliveries. The app replaces manual paper-based processes with a streamlined mobile-first workflow that works offline and syncs automatically when connected.",
+      image: "/manifest.svg",
+      tags: [
+        "React Native",
+        "Expo SDK 54",
+        "Redux",
+        "AsyncStorage",
+        "Supabase",
+        "Node.js",
+        "Express",
+        "Render",
+      ],
+      liveUrl: "https://github.com/NasihNazeem/manifest",
+      githubUrl: "https://github.com/NasihNazeem/manifest",
+      features: [
+        "Offline-first architecture with automatic cloud sync",
+        "Shipment management system with discrepancy tracking",
+        "Real-time barcode scanning with dual-mode support",
+        "Intelligent search and filter capabilities",
+        "Automatic discrepancy detection and alerts",
+        "PDF processing for shipment manifests",
+        "Multi-device cloud sync with conflict resolution",
+        "Comprehensive data export functionality",
+      ],
+      challenges:
+        "The main challenge was preventing duplicate barcode scans that triggered multiple modals before the UI could close. I solved this by implementing a useRef flag to track callback execution and prevent race conditions. Another challenge was multi-device sync without conflicts—I designed a REST API with device-specific tracking, implemented optimistic updates with background sync, and built incremental sync using timestamps with Redux merge logic to handle conflicts.",
+      contributions:
+        "As the sole developer, I architected and built the entire application from the ground up. This included designing the offline-first architecture with Redux Persist and AsyncStorage, implementing dual-mode barcode scanning with race condition handling, building the REST API backend with Express and Supabase, creating the background sync queue for offline data persistence, and setting up the complete deployment pipeline using EAS and Render.",
+      technologies: {
+        frontend: [
+          "React Native",
+          "Expo SDK 54",
+          "Redux Toolkit",
+          "AsyncStorage",
+          "Expo Camera",
+        ],
+        backend: ["Node.js", "Express", "Supabase", "PostgreSQL", "REST API"],
+        deployment: ["Expo Application Services (EAS)", "Render", "Ngrok"],
+      },
+    },
   };
 
   const project = projects[projectId as keyof typeof projects];

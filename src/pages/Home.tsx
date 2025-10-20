@@ -28,12 +28,12 @@ const Home = () => {
       tags: ["React", "Node.js", "PostgreSQL"],
     },
     {
-      id: "luuqad",
-      title: "Luuqad",
+      id: "manifest",
+      title: "Manifest",
       description:
-        "A full-stack ed-tech mobile application for language learning.",
-      image: "/luuqad.svg",
-      tags: ["React Native", "Node.js", "Expo"],
+        "A mobile-first warehouse management app that digitizes shipment receiving with offline-first barcode scanning, discrepancy tracking, and cloud sync.",
+      image: "/manifest.svg",
+      tags: ["React Native", "Node.js", "Supabase"],
     },
   ];
 
@@ -59,7 +59,15 @@ const Home = () => {
       "Firebase",
       "Google Cloud Functions",
     ],
-    database: ["PostgreSQL", "MongoDB", "Firestore", "Redis", "SQL", "NoSQL"],
+    database: [
+      "PostgreSQL",
+      "MongoDB",
+      "Firestore",
+      "Supabase",
+      "Redis",
+      "SQL",
+      "NoSQL",
+    ],
     devops: [
       "Git & GitHub",
       "Docker",
@@ -68,6 +76,7 @@ const Home = () => {
       "Expo Application Services",
       "AWS",
       "Azure",
+      "TestFlight",
     ],
   };
 
