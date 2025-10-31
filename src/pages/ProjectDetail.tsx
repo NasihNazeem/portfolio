@@ -199,6 +199,53 @@ const ProjectDetail = () => {
         deployment: ["Expo Application Services (EAS)", "Render", "Ngrok"],
       },
     },
+    urlShortener: {
+      title: "URL Shortener",
+      subtitle: "Microservices URL Shortener with Analytics",
+      description:
+        "A distributed URL shortening service built with Go backend and Vue.js frontend, demonstrating microservices architecture with gRPC inter-service communication. The application features real-time analytics tracking for click-through rates and unique visitors, with separate services for URL management and analytics that communicate via Protocol Buffers. Built with production-grade patterns including thread-safe concurrent access, RESTful APIs for frontend integration, and gRPC for efficient service-to-service communication.",
+      image: "/url-shortener.png",
+      tags: [
+        "Go",
+        "Vue.js",
+        "gRPC",
+        "Protocol Buffers",
+        "Vite",
+        "Microservices",
+        "REST API",
+        "Render",
+      ],
+      liveUrl: "https://url-shortener-frontend-zzil.onrender.com",
+      githubUrl: "https://github.com/NasihNazeem/url-shortener",
+      features: [
+        "Microservices architecture with separate URL and analytics services",
+        "gRPC-based inter-service communication with Protocol Buffers",
+        "Real-time analytics tracking with click counts and unique visitors",
+        "Thread-safe concurrent request handling with Go mutexes",
+        "In-memory storage with goroutine-based background processing",
+      ],
+      challenges:
+        "The main challenge was designing a beginner-friendly microservices architecture while maintaining production-grade patterns. I solved this by implementing both gRPC for service-to-service communication and REST APIs for frontend integration, allowing the frontend to use familiar HTTP while backend services leveraged efficient gRPC. Another challenge was thread-safe data access with Go's concurrent model, I implemented mutex locks (RWMutex) to protect shared maps and used goroutines for background analytics recording without blocking the main request flow.",
+      contributions:
+        "As the sole developer, I architected and built the entire distributed system from scratch. This included designing the Protocol Buffer schemas for type-safe gRPC communication, implementing the Go backend with concurrent request handling using goroutines and mutexes, building the Vue.js 3 frontend with Composition API and Vite, creating the analytics microservice for real-time click tracking, and deploying the entire stack to Render with environment-based configuration for production.",
+      technologies: {
+        frontend: ["Vue.js", "Vite", "Composition API", "Fetch API", "CSS3"],
+        backend: [
+          "Go",
+          "gRPC",
+          "Protocol Buffers",
+          "REST API",
+          "Goroutines",
+          "Mutex",
+        ],
+        deployment: [
+          "Render",
+          "GitHub",
+          "Environment Variables",
+          "Static Sites",
+        ],
+      },
+    },
   };
 
   const project = projects[projectId as keyof typeof projects];

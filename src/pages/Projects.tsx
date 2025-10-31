@@ -67,13 +67,21 @@ const Projects = () => {
       description:
         "A mobile-first warehouse management app that digitizes shipment receiving with offline-first barcode scanning, discrepancy tracking, and cloud sync.",
       image: "/manifest.svg",
+      tags: ["React Native", "Expo", "Redux", "Supabase", "Node.js", "Express"],
+    },
+    {
+      id: "urlShortener",
+      title: "URL Shortener",
+      description:
+        "A distributed URL shortening service with microservices architecture using Go backend with gRPC inter-service communication, Vue.js frontend, and real-time analytics tracking.",
+      image: "/url-shortener.svg",
       tags: [
-        "React Native",
-        "Expo",
-        "Redux",
-        "Supabase",
-        "Node.js",
-        "Express",
+        "Golang/Go",
+        "Vue.js",
+        "gRPC",
+        "Protocol Buffers",
+        "Microservices",
+        "REST API",
       ],
     },
   ];
