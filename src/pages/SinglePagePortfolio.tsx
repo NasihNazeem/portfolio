@@ -1,4 +1,4 @@
-import { Github, Linkedin, ExternalLink, Sun, Moon } from "lucide-react";
+import { Github, Linkedin, ExternalLink, Phone, Mail } from "lucide-react";
 import { useState, useEffect } from "react";
 import {
   Card,
@@ -10,7 +10,6 @@ import {
 
 const SinglePagePortfolio = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isDarkMode, setIsDarkMode] = useState(true);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -25,12 +24,8 @@ const SinglePagePortfolio = () => {
   }, []);
 
   useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [isDarkMode]);
+    document.documentElement.classList.add("dark");
+  }, []);
 
   const navigation = [
     { id: "about", label: "About" },
@@ -80,31 +75,31 @@ const SinglePagePortfolio = () => {
 
   return (
     <div className="min-h-screen relative">
-      {/* Cursor spotlight effect */}
+      {/* Cursor spotlight effect - hidden on mobile */}
       <div
-        className="pointer-events-none fixed inset-0 z-30 transition duration-300"
+        className="pointer-events-none fixed inset-0 z-30 transition duration-300 hidden lg:block"
         style={{
           background: `radial-gradient(600px at ${mousePosition.x}px ${mousePosition.y}px, rgba(120, 100, 70, 0.25), transparent 80%)`,
         }}
       />
-      <div className="mx-auto max-w-7xl px-6 lg:px-12">
-        <div className="flex">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-12">
+        <div className="flex flex-col lg:flex-row">
           {/* Fixed Left Sidebar */}
-          <aside className="w-full lg:w-1/2 lg:sticky lg:top-0 lg:h-screen p-8 lg:p-16 flex flex-col justify-between">
+          <aside className="w-full lg:w-1/2 lg:sticky lg:top-0 lg:h-screen py-12 px-4 sm:px-8 lg:p-16 flex flex-col justify-between lg:min-h-screen">
             <div>
-              <h1 className="text-4xl lg:text-5xl font-bold mb-2">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-2">
                 Nasih Nazeem
               </h1>
-              <h2 className="text-xl lg:text-2xl text-muted-foreground mb-4">
+              <h2 className="text-lg sm:text-xl lg:text-2xl text-muted-foreground mb-4">
                 Full-Stack Engineer
               </h2>
-              <p className="text-muted-foreground mb-8 max-w-sm">
+              <p className="text-sm sm:text-base text-muted-foreground mb-8 max-w-sm">
                 Building impactful applications with exceptional user
                 experiences.
               </p>
 
               {/* Navigation */}
-              <nav className="hidden lg:block space-y-4 mb-12">
+              <nav className="hidden lg:block space-y-4 mb-8 lg:mb-12">
                 {navigation.map((item) => (
                   <button
                     key={item.id}
@@ -118,7 +113,7 @@ const SinglePagePortfolio = () => {
             </div>
 
             {/* Footer with social links */}
-            <footer className="flex gap-6 mt-12">
+            <footer className="flex gap-4 sm:gap-6 mt-8 lg:mt-12">
               <a
                 href="https://github.com/NasihNazeem"
                 target="_blank"
@@ -126,7 +121,7 @@ const SinglePagePortfolio = () => {
                 className="text-muted-foreground hover:text-foreground transition-colors"
                 aria-label="GitHub"
               >
-                <Github className="h-6 w-6" />
+                <Github className="h-5 w-5 sm:h-6 sm:w-6" />
               </a>
               <a
                 href="https://www.linkedin.com/in/nasih-nazeem"
@@ -135,20 +130,34 @@ const SinglePagePortfolio = () => {
                 className="text-muted-foreground hover:text-foreground transition-colors"
                 aria-label="LinkedIn"
               >
-                <Linkedin className="h-6 w-6" />
+                <Linkedin className="h-5 w-5 sm:h-6 sm:w-6" />
+              </a>
+              <a
+                href="tel:+14037007883"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="Phone"
+              >
+                <Phone className="h-5 w-5 sm:h-6 sm:w-6" />
+              </a>
+              <a
+                href="mailto:nasihnazeem@gmail.com"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label="Email"
+              >
+                <Mail className="h-5 w-5 sm:h-6 sm:w-6" />
               </a>
             </footer>
           </aside>
 
           {/* Right Content Area */}
-          <div className="w-full lg:w-1/2 lg:ml-auto p-8 lg:p-16 space-y-24">
+          <div className="w-full lg:w-1/2 lg:ml-auto py-8 px-4 sm:px-8 lg:p-16 space-y-16 lg:space-y-24">
             {/* About Section */}
             <section id="about" className="scroll-mt-16">
               <h2 className="text-sm uppercase tracking-widest text-muted-foreground mb-4 lg:hidden">
                 About
               </h2>
-              <div className="p-6">
-                <div className="space-y-4 text-muted-foreground">
+              <div className="lg:p-6">
+                <div className="space-y-4 text-sm sm:text-base text-muted-foreground">
                   <p>
                     I'm a passionate Software Engineer with a background in
                     Electrical Engineering and a strong focus on full-stack
@@ -160,8 +169,8 @@ const SinglePagePortfolio = () => {
                   <p>
                     My experience spans across mobile and web development, where
                     I've shipped production apps used by hundreds of users. I'm
-                    particularly interested in performance optimization, real-time
-                    systems, and creating delightful user experiences.
+                    particularly interested in performance optimization,
+                    real-time systems, and creating delightful user experiences.
                   </p>
                 </div>
               </div>
@@ -179,7 +188,7 @@ const SinglePagePortfolio = () => {
                   rel="noopener noreferrer"
                   className="block"
                 >
-                  <Card className="group bg-transparent border-transparent hover:bg-card hover:border-border hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer">
+                  <Card className="group bg-transparent border-transparent hover:bg-card hover:border-border hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer hover:rotate-1">
                     <CardHeader>
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-sm text-muted-foreground">
@@ -198,7 +207,10 @@ const SinglePagePortfolio = () => {
                     </CardHeader>
                     <CardContent>
                       <p className="text-muted-foreground text-sm mb-4">
-                        Built a cross-platform fantasy sports app with React Native and Firebase, featuring real-time player data, custom Elo matchmaking, and a Redis caching layer that reduced API response times by 65%.
+                        Built a cross-platform fantasy sports app with React
+                        Native and Firebase, featuring real-time player data,
+                        custom Elo matchmaking, and a Redis caching layer that
+                        reduced API response times by 65%.
                       </p>
                       <div className="flex flex-wrap gap-2">
                         <span className="text-xs bg-secondary px-2 py-1 rounded-full">
@@ -227,7 +239,7 @@ const SinglePagePortfolio = () => {
                   rel="noopener noreferrer"
                   className="block"
                 >
-                  <Card className="group bg-transparent border-transparent hover:bg-card hover:border-border hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer">
+                  <Card className="group bg-transparent border-transparent hover:bg-card hover:border-border hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer hover:rotate-1">
                     <CardHeader>
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-sm text-muted-foreground">
@@ -246,7 +258,10 @@ const SinglePagePortfolio = () => {
                     </CardHeader>
                     <CardContent>
                       <p className="text-muted-foreground text-sm mb-4">
-                        Developed a financial mobile app using Spring Boot, React Native, and GraphQL, optimizing API response times by 37% and delivering an award-winning hackathon solution with 93% client satisfaction.
+                        Developed a financial mobile app using Spring Boot,
+                        React Native, and GraphQL, optimizing API response times
+                        by 37% and delivering an award-winning hackathon
+                        solution with 93% client satisfaction.
                       </p>
                       <div className="flex flex-wrap gap-2">
                         <span className="text-xs bg-secondary px-2 py-1 rounded-full">
