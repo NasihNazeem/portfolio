@@ -1,4 +1,4 @@
-import { Github, Linkedin } from "lucide-react";
+import { Github, Linkedin, ExternalLink } from "lucide-react";
 import {
   Card,
   CardContent,
@@ -30,6 +30,7 @@ const SinglePagePortfolio = () => {
       tags: ["React Native", "Firebase", "Redis"],
       year: "2025",
       logo: "/rookies.svg",
+      url: "https://github.com/Rookies-Fantasy/rookies-fantasy",
     },
     {
       id: "manifest",
@@ -39,6 +40,7 @@ const SinglePagePortfolio = () => {
       tags: ["React Native", "Node.js", "Supabase"],
       year: "2025",
       logo: "/manifest.svg",
+      url: "https://github.com/NasihNazeem/manifest",
     },
     {
       id: "chirp",
@@ -48,6 +50,7 @@ const SinglePagePortfolio = () => {
       tags: ["React", "Node.js", "PostgreSQL"],
       year: "2024",
       logo: "/chirp.svg",
+      url: "https://github.com/Project-Chirp",
     },
   ];
 
@@ -136,105 +139,136 @@ const SinglePagePortfolio = () => {
               <h2 className="text-sm uppercase tracking-widest text-muted-foreground mb-4 lg:hidden">
                 Experience
               </h2>
-              <div className="space-y-12">
-                <div className="group">
-                  <div className="text-xs text-muted-foreground mb-2">
-                    March 2025 — Present
-                  </div>
-                  <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors">
-                    CoFounder and Software Engineer · Rookies
-                  </h3>
-                  <ul className="text-muted-foreground text-sm mb-3 space-y-2 list-disc list-inside">
-                    <li>
-                      Composed a cross-platform end-to-end fantasy sports app
-                      with React Native, Tailwind ensuring responsive design,
-                      and Firebase, featuring real-time player data and
-                      gameplay.
-                    </li>
-                    <li>
-                      Integrated an API sync with Firestore and Google Cloud
-                      Functions to provide continuous data updates and
-                      responsive app performance.
-                    </li>
-                    <li>
-                      Developed custom algorithmic systems (Elo matchmaking)
-                      demonstrating ability to create complex, performant
-                      solutions for enterprise-scale user engagement.
-                    </li>
-                    <li>
-                      Built production-grade caching layer using Redis, reducing
-                      API response times by 65% and enabling real-time data
-                      synchronization across distributed systems.
-                    </li>
-                    <li>
-                      Designed full app and cloud infrastructure and implemented
-                      CI/CD using Expo Application Services for scalable,
-                      automated deployment.
-                    </li>
-                  </ul>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="text-xs bg-secondary px-2 py-1 rounded-full">
-                      React Native
-                    </span>
-                    <span className="text-xs bg-secondary px-2 py-1 rounded-full">
-                      Firebase
-                    </span>
-                    <span className="text-xs bg-secondary px-2 py-1 rounded-full">
-                      Redis
-                    </span>
-                    <span className="text-xs bg-secondary px-2 py-1 rounded-full">
-                      Google Cloud Functions
-                    </span>
-                    <span className="text-xs bg-secondary px-2 py-1 rounded-full">
-                      Expo
-                    </span>
-                  </div>
-                </div>
+              <div className="space-y-6">
+                <a
+                  href="https://rookiesfantasy.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                >
+                  <Card className="group hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer">
+                    <CardHeader>
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-sm text-muted-foreground">
+                          Rookies
+                        </span>
+                        <span className="text-sm text-muted-foreground">
+                          March 2025 — Present
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <CardTitle className="group-hover:text-primary transition-colors">
+                          CoFounder and Software Engineer
+                        </CardTitle>
+                        <ExternalLink className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="text-muted-foreground text-sm mb-4 space-y-2 list-disc list-inside">
+                        <li>
+                          Built cross-platform fantasy sports app with React
+                          Native, Firebase, and real-time player data.
+                        </li>
+                        <li>
+                          Integrated Firestore and Cloud Functions for
+                          continuous data updates.
+                        </li>
+                        <li>
+                          Developed custom Elo matchmaking algorithm for
+                          enterprise-scale user engagement.
+                        </li>
+                        <li>
+                          Implemented Redis caching layer, reducing API response
+                          times by 65%.
+                        </li>
+                        <li>
+                          Designed cloud infrastructure with CI/CD using Expo
+                          Application Services.
+                        </li>
+                      </ul>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="text-xs bg-secondary px-2 py-1 rounded-full">
+                          React Native
+                        </span>
+                        <span className="text-xs bg-secondary px-2 py-1 rounded-full">
+                          Firebase
+                        </span>
+                        <span className="text-xs bg-secondary px-2 py-1 rounded-full">
+                          Redis
+                        </span>
+                        <span className="text-xs bg-secondary px-2 py-1 rounded-full">
+                          Google Cloud Functions
+                        </span>
+                        <span className="text-xs bg-secondary px-2 py-1 rounded-full">
+                          Expo
+                        </span>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </a>
 
-                <div className="group">
-                  <div className="text-xs text-muted-foreground mb-2">
-                    June 2022 — August 2022
-                  </div>
-                  <h3 className="font-semibold mb-2 group-hover:text-primary transition-colors">
-                    Software Engineering Intern · Publicis Sapient
-                  </h3>
-                  <ul className="text-muted-foreground text-sm mb-3 space-y-2 list-disc list-inside">
-                    <li>
-                      Developed a financial mobile application using Spring Boot
-                      microservices, React Native, PostgreSQL, and GraphQL.
-                    </li>
-                    <li>
-                      Engineered the development environment using the Expo
-                      application to handle developing Android and iOS.
-                    </li>
-                    <li>
-                      Optimized API response time by 37% through GraphQL
-                      integration, enhancing database querying and application
-                      performance.
-                    </li>
-                    <li>
-                      Delivered a award-winning solution in a company hackathon,
-                      achieving a 93% client satisfaction score.
-                    </li>
-                  </ul>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="text-xs bg-secondary px-2 py-1 rounded-full">
-                      Spring Boot
-                    </span>
-                    <span className="text-xs bg-secondary px-2 py-1 rounded-full">
-                      React Native
-                    </span>
-                    <span className="text-xs bg-secondary px-2 py-1 rounded-full">
-                      PostgreSQL
-                    </span>
-                    <span className="text-xs bg-secondary px-2 py-1 rounded-full">
-                      GraphQL
-                    </span>
-                    <span className="text-xs bg-secondary px-2 py-1 rounded-full">
-                      Expo
-                    </span>
-                  </div>
-                </div>
+                <a
+                  href="https://www.publicissapient.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block"
+                >
+                  <Card className="group hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer">
+                    <CardHeader>
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-sm text-muted-foreground">
+                          Publicis Sapient
+                        </span>
+                        <span className="text-sm text-muted-foreground">
+                          June 2022 — August 2022
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <CardTitle className="group-hover:text-primary transition-colors">
+                          Software Engineering Intern
+                        </CardTitle>
+                        <ExternalLink className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="text-muted-foreground text-sm mb-4 space-y-2 list-disc list-inside">
+                        <li>
+                          Developed financial mobile app using Spring Boot,
+                          React Native, PostgreSQL, and GraphQL.
+                        </li>
+                        <li>
+                          Built development environment with Expo for Android
+                          and iOS.
+                        </li>
+                        <li>
+                          Optimized API response time by 37% through GraphQL
+                          integration.
+                        </li>
+                        <li>
+                          Delivered award-winning hackathon solution with 93%
+                          client satisfaction.
+                        </li>
+                      </ul>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="text-xs bg-secondary px-2 py-1 rounded-full">
+                          Spring Boot
+                        </span>
+                        <span className="text-xs bg-secondary px-2 py-1 rounded-full">
+                          React Native
+                        </span>
+                        <span className="text-xs bg-secondary px-2 py-1 rounded-full">
+                          PostgreSQL
+                        </span>
+                        <span className="text-xs bg-secondary px-2 py-1 rounded-full">
+                          GraphQL
+                        </span>
+                        <span className="text-xs bg-secondary px-2 py-1 rounded-full">
+                          Expo
+                        </span>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </a>
               </div>
             </section>
 
@@ -245,46 +279,54 @@ const SinglePagePortfolio = () => {
               </h2>
               <div className="space-y-6">
                 {projects.map((project) => (
-                  <Card
+                  <a
                     key={project.id}
-                    className="group hover:shadow-lg hover:scale-105 transition-all duration-300 relative overflow-hidden"
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
                   >
-                    <CardHeader>
-                      <div className="flex items-start justify-between">
-                        <div>
-                          <CardTitle className="group-hover:text-primary transition-colors">
-                            {project.title}
-                          </CardTitle>
-                          <CardDescription className="mt-2">
-                            {project.description}
-                          </CardDescription>
-                        </div>
-                        <span className="text-xs text-muted-foreground">
-                          {project.year}
-                        </span>
-                      </div>
-                    </CardHeader>
-                    <CardContent className="relative">
-                      <div className="flex flex-wrap gap-2">
-                        {project.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="text-xs bg-secondary px-2 py-1 rounded-full"
-                          >
-                            {tag}
+                    <Card className="group  hover:scale-105 transition-all duration-300 relative overflow-hidden cursor-pointer hover:shadow-[0_0_15px_rgba(225,187,128,0.3)] hover:rotate-1">
+                      <CardHeader>
+                        <div className="flex items-start justify-between">
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2">
+                              <CardTitle className="group-hover:text-primary transition-colors">
+                                {project.title}
+                              </CardTitle>
+                              <ExternalLink className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                            </div>
+                            <CardDescription className="mt-2">
+                              {project.description}
+                            </CardDescription>
+                          </div>
+                          <span className="text-xs text-muted-foreground ml-4">
+                            {project.year}
                           </span>
-                        ))}
-                      </div>
-                      {/* Circular logo aligned with bottom of tech tags */}
-                      <div className="absolute bottom-0 right-0 w-20 h-20 rounded-full p-3 flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:-rotate-12">
-                        <img
-                          src={project.logo}
-                          alt={`${project.title} logo`}
-                          className="w-full h-full object-cover rounded-full"
-                        />
-                      </div>
-                    </CardContent>
-                  </Card>
+                        </div>
+                      </CardHeader>
+                      <CardContent className="relative">
+                        <div className="flex flex-wrap gap-2">
+                          {project.tags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="text-xs bg-secondary px-2 py-1 rounded-full"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                        {/* Circular logo aligned with bottom of tech tags */}
+                        <div className="absolute bottom-0 right-0 size-10 rounded-full m-3 flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:-rotate-12 ">
+                          <img
+                            src={project.logo}
+                            alt={`${project.title} logo`}
+                            className="w-full h-full object-cover rounded-full"
+                          />
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </a>
                 ))}
               </div>
             </section>
