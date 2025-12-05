@@ -10,6 +10,7 @@ import {
 
 const SinglePagePortfolio = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [activeSection, setActiveSection] = useState("about");
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -25,6 +26,31 @@ const SinglePagePortfolio = () => {
 
   useEffect(() => {
     document.documentElement.classList.add("dark");
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["about", "experience", "projects"];
+      const scrollPosition = window.scrollY + window.innerHeight / 3;
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Initial check
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const navigation = [
@@ -88,7 +114,12 @@ const SinglePagePortfolio = () => {
           <aside className="w-full lg:w-1/2 lg:sticky lg:top-0 lg:h-screen py-12 px-4 sm:px-8 lg:p-16 flex flex-col justify-between lg:min-h-screen">
             <div>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-2">
-                Nasih Nazeem
+                <a
+                  href="/"
+                  className="hover:text-muted-foreground transition-colors"
+                >
+                  Nasih Nazeem
+                </a>
               </h1>
               <h2 className="text-lg sm:text-xl lg:text-2xl text-muted-foreground mb-4">
                 Full-Stack Engineer
@@ -104,7 +135,11 @@ const SinglePagePortfolio = () => {
                   <button
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
-                    className="block text-left text-sm uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
+                    className={`block text-left text-sm uppercase tracking-widest transition-colors ${
+                      activeSection === item.id
+                        ? "text-foreground opacity-100"
+                        : "text-muted-foreground opacity-50 hover:opacity-100"
+                    }`}
                   >
                     {item.label}
                   </button>
@@ -181,12 +216,12 @@ const SinglePagePortfolio = () => {
               <h2 className="text-sm uppercase tracking-widest text-muted-foreground mb-4 lg:hidden">
                 Experience
               </h2>
-              <div className="space-y-6">
+              <div className="space-y-6 group/experience">
                 <a
                   href="https://rookiesfantasy.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block"
+                  className="block group/card transition-opacity duration-300 group-hover/experience:opacity-50 hover:!opacity-100"
                 >
                   <Card className="group bg-transparent border-transparent hover:bg-card hover:border-border hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer hover:rotate-1">
                     <CardHeader>
@@ -237,7 +272,7 @@ const SinglePagePortfolio = () => {
                   href="https://www.publicissapient.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block"
+                  className="block group/card transition-opacity duration-300 group-hover/experience:opacity-50 hover:!opacity-100"
                 >
                   <Card className="group bg-transparent border-transparent hover:bg-card hover:border-border hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer hover:rotate-1">
                     <CardHeader>
@@ -291,14 +326,14 @@ const SinglePagePortfolio = () => {
               <h2 className="text-sm uppercase tracking-widest text-muted-foreground mb-4 lg:hidden">
                 Projects
               </h2>
-              <div className="space-y-6">
+              <div className="space-y-6 group/projects">
                 {projects.map((project) => (
                   <a
                     key={project.id}
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block"
+                    className="block group/card transition-opacity duration-300 group-hover/projects:opacity-50 hover:!opacity-100"
                   >
                     <Card className="group bg-transparent border-transparent hover:bg-card hover:border-border hover:scale-105 transition-all duration-300 relative overflow-hidden cursor-pointer hover:shadow-[0_0_15px_rgba(27,30,34,0.5)] hover:rotate-1">
                       <CardHeader>
@@ -331,7 +366,7 @@ const SinglePagePortfolio = () => {
                           ))}
                         </div>
                         {/* Circular logo aligned with bottom of tech tags */}
-                        <div className="absolute bottom-0 right-0 size-10 rounded-full m-3 flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:-rotate-12 ">
+                        <div className="absolute bottom-0 right-0 size-10 rounded-full m-3 flex items-center justify-center overflow-hidden transition-all duration-300">
                           <img
                             src={project.logo}
                             alt={`${project.title} logo`}
