@@ -1,4 +1,5 @@
-import { Github, Linkedin, ExternalLink } from "lucide-react";
+import { Github, Linkedin, ExternalLink, Sun, Moon } from "lucide-react";
+import { useState, useEffect } from "react";
 import {
   Card,
   CardContent,
@@ -8,6 +9,29 @@ import {
 } from "@/components/ui/card";
 
 const SinglePagePortfolio = () => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isDarkMode, setIsDarkMode] = useState(true);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [isDarkMode]);
+
   const navigation = [
     { id: "about", label: "About" },
     { id: "experience", label: "Experience" },
@@ -55,7 +79,14 @@ const SinglePagePortfolio = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      {/* Cursor spotlight effect */}
+      <div
+        className="pointer-events-none fixed inset-0 z-30 transition duration-300"
+        style={{
+          background: `radial-gradient(600px at ${mousePosition.x}px ${mousePosition.y}px, rgba(120, 100, 70, 0.25), transparent 80%)`,
+        }}
+      />
       <div className="mx-auto max-w-7xl px-6 lg:px-12">
         <div className="flex">
           {/* Fixed Left Sidebar */}
@@ -116,21 +147,23 @@ const SinglePagePortfolio = () => {
               <h2 className="text-sm uppercase tracking-widest text-muted-foreground mb-4 lg:hidden">
                 About
               </h2>
-              <div className="space-y-4 text-muted-foreground">
-                <p>
-                  I'm a passionate Software Engineer with a background in
-                  Electrical Engineering and a strong focus on full-stack
-                  application development. From building real-time mobile apps
-                  with React Native and Firebase to designing scalable backend
-                  systems with Node.js and PostgreSQL, I thrive on turning
-                  complex problems into elegant, user-focused solutions.
-                </p>
-                <p>
-                  My experience spans across mobile and web development, where
-                  I've shipped production apps used by hundreds of users. I'm
-                  particularly interested in performance optimization, real-time
-                  systems, and creating delightful user experiences.
-                </p>
+              <div className="p-6">
+                <div className="space-y-4 text-muted-foreground">
+                  <p>
+                    I'm a passionate Software Engineer with a background in
+                    Electrical Engineering and a strong focus on full-stack
+                    application development. From building real-time mobile apps
+                    with React Native and Firebase to designing scalable backend
+                    systems with Node.js and PostgreSQL, I thrive on turning
+                    complex problems into elegant, user-focused solutions.
+                  </p>
+                  <p>
+                    My experience spans across mobile and web development, where
+                    I've shipped production apps used by hundreds of users. I'm
+                    particularly interested in performance optimization, real-time
+                    systems, and creating delightful user experiences.
+                  </p>
+                </div>
               </div>
             </section>
 
@@ -146,7 +179,7 @@ const SinglePagePortfolio = () => {
                   rel="noopener noreferrer"
                   className="block"
                 >
-                  <Card className="group hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer">
+                  <Card className="group bg-transparent border-transparent hover:bg-card hover:border-border hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer">
                     <CardHeader>
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-sm text-muted-foreground">
@@ -164,28 +197,9 @@ const SinglePagePortfolio = () => {
                       </div>
                     </CardHeader>
                     <CardContent>
-                      <ul className="text-muted-foreground text-sm mb-4 space-y-2 list-disc list-inside">
-                        <li>
-                          Built cross-platform fantasy sports app with React
-                          Native, Firebase, and real-time player data.
-                        </li>
-                        <li>
-                          Integrated Firestore and Cloud Functions for
-                          continuous data updates.
-                        </li>
-                        <li>
-                          Developed custom Elo matchmaking algorithm for
-                          enterprise-scale user engagement.
-                        </li>
-                        <li>
-                          Implemented Redis caching layer, reducing API response
-                          times by 65%.
-                        </li>
-                        <li>
-                          Designed cloud infrastructure with CI/CD using Expo
-                          Application Services.
-                        </li>
-                      </ul>
+                      <p className="text-muted-foreground text-sm mb-4">
+                        Built a cross-platform fantasy sports app with React Native and Firebase, featuring real-time player data, custom Elo matchmaking, and a Redis caching layer that reduced API response times by 65%.
+                      </p>
                       <div className="flex flex-wrap gap-2">
                         <span className="text-xs bg-secondary px-2 py-1 rounded-full">
                           React Native
@@ -213,7 +227,7 @@ const SinglePagePortfolio = () => {
                   rel="noopener noreferrer"
                   className="block"
                 >
-                  <Card className="group hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer">
+                  <Card className="group bg-transparent border-transparent hover:bg-card hover:border-border hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer">
                     <CardHeader>
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-sm text-muted-foreground">
@@ -231,24 +245,9 @@ const SinglePagePortfolio = () => {
                       </div>
                     </CardHeader>
                     <CardContent>
-                      <ul className="text-muted-foreground text-sm mb-4 space-y-2 list-disc list-inside">
-                        <li>
-                          Developed financial mobile app using Spring Boot,
-                          React Native, PostgreSQL, and GraphQL.
-                        </li>
-                        <li>
-                          Built development environment with Expo for Android
-                          and iOS.
-                        </li>
-                        <li>
-                          Optimized API response time by 37% through GraphQL
-                          integration.
-                        </li>
-                        <li>
-                          Delivered award-winning hackathon solution with 93%
-                          client satisfaction.
-                        </li>
-                      </ul>
+                      <p className="text-muted-foreground text-sm mb-4">
+                        Developed a financial mobile app using Spring Boot, React Native, and GraphQL, optimizing API response times by 37% and delivering an award-winning hackathon solution with 93% client satisfaction.
+                      </p>
                       <div className="flex flex-wrap gap-2">
                         <span className="text-xs bg-secondary px-2 py-1 rounded-full">
                           Spring Boot
@@ -286,7 +285,7 @@ const SinglePagePortfolio = () => {
                     rel="noopener noreferrer"
                     className="block"
                   >
-                    <Card className="group  hover:scale-105 transition-all duration-300 relative overflow-hidden cursor-pointer hover:shadow-[0_0_15px_rgba(225,187,128,0.3)] hover:rotate-1">
+                    <Card className="group bg-transparent border-transparent hover:bg-card hover:border-border hover:scale-105 transition-all duration-300 relative overflow-hidden cursor-pointer hover:shadow-[0_0_15px_rgba(27,30,34,0.5)] hover:rotate-1">
                       <CardHeader>
                         <div className="flex items-start justify-between">
                           <div className="flex-1">
